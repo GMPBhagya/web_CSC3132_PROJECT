@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('config.php'); // Include the database configuration
+include('config.php');
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -20,14 +20,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Fetch the user data
         $row = $result->fetch_assoc();
 
-        // Verify password using password_hash() (hashing for better security)
+        // Verify password using password_hash()
         if (password_verify($password, $row['password_hash'])) {
             // Login successful, set session variables
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['username'] = $row['username'];
             $_SESSION['role'] = $row['user_role'];
 
-            // Redirect to the home page
+            // Redirect to the homepage
             header("Location: index.php");
             exit();
         } else {
@@ -50,13 +50,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Sidebar or Navbar Section (Optional) -->
     <div class="container">
         <h2 class="mt-5">Login</h2>
-        <?php
-        if (isset($error)) {
-            echo "<div class='alert alert-danger'>$error</div>";
-        }
-        ?>
+        <?php if (isset($error)) { echo "<div class='alert alert-danger'>$error</div>"; } ?>
         <form method="POST" action="login.php">
             <div class="form-group">
                 <label for="email">Email:</label>
