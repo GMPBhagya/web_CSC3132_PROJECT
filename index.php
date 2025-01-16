@@ -161,7 +161,7 @@
   <!-- Sidebar -->
 <div class="sidebar">
   <h2>BookHevan</h2>
-  <a href="index.html">Home</a>
+  <a href="index.php">Home</a>
   <a href="about.html">About Us</a>
   <a href="#">Discover Stories</a>
 
@@ -220,17 +220,14 @@
       <h2 class="text-center">What Our Users Say</h2>
       <div class="row mt-4">
         <div class="col-md-4 text-center">
-          <img src="https://via.placeholder.com/100" alt="Alex" class="rounded-circle mb-3">
           <p class="testimonial">"BookHevan has revolutionized my reading experience. I can engage directly with authors!"</p>
           <p class="testimonial-author">- Alex, Reader</p>
         </div>
         <div class="col-md-4 text-center">
-          <img src="https://via.placeholder.com/100" alt="Emma" class="rounded-circle mb-3">
           <p class="testimonial">"I've found a supportive community and now earn from my stories. BookHevan is amazing!"</p>
           <p class="testimonial-author">- Emma, Writer</p>
         </div>
         <div class="col-md-4 text-center">
-          <img src="https://via.placeholder.com/100" alt="Leo" class="rounded-circle mb-3">
           <p class="testimonial">"Great platform for both reading and writing! The free sample part draws me in every time."</p>
           <p class="testimonial-author">- Leo, Reader</p>
         </div>

@@ -89,8 +89,8 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <h2>BookHevan</h2>
-    <a href="index.html">Home</a>
-    <a href="about.html">About Us</a>
+    <a href="index.php">Home</a>
+    <a href="about.php">About Us</a>
     <a href="#">Discover Stories</a>
     <a href="#">Write a Story</a>
     <a href="#">Contact</a>
