@@ -1,9 +1,9 @@
 <?php
 // dbconf.php - Database connection file
 
-$host = 'localhost'; // Your database host (e.g., 'localhost')
+$host = '127.0.0.1'; // Your database host (e.g., 'localhost')
 $username = 'root';  // Your database username
-$password = '';      // Your database password
+$password = 'mariadb';      // Your database password
 $dbname = 'bookhevan'; // Your database name
 
 // Create connection

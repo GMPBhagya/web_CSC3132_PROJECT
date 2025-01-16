@@ -1,6 +1,6 @@
 <?php
 // Include the database connection
-include('dbconf.php');
+include('../dbconf.php');
 
 // Start session
 session_start();
@@ -26,7 +26,7 @@ if (isset($_POST['loginSubmit'])) {
                 $_SESSION['user_name'] = $user['user_name'];
                 $_SESSION['user_role'] = $user['user_role'];
 
-                header('Location: welcome.php'); // Redirect after successful login
+                header('Location: ../index.php'); // Redirect after successful login
                 exit;
             } else {
                 $loginError = "Incorrect password.";
@@ -65,7 +65,7 @@ if (isset($_POST['signupSubmit'])) {
                 $stmt->execute();
 
                 // Redirect to login page after successful signup
-                header('Location: login.php');
+                header('Location: index.php');
                 exit;
             }
         }
@@ -163,7 +163,7 @@ if (isset($_POST['signupSubmit'])) {
     .form.active {
       display: flex;
     }
-  </style>
+    </style>
 </head>
 <body>
 
@@ -179,6 +179,7 @@ if (isset($_POST['signupSubmit'])) {
     <form method="POST">
       <input type="email" name="loginEmail" placeholder="Enter your email" required>
       <input type="password" name="loginPassword" placeholder="Enter your password" required>
+      <br><br>
       <input type="submit" value="Login" name="loginSubmit">
     </form>
   </div>
@@ -190,6 +191,7 @@ if (isset($_POST['signupSubmit'])) {
       <input type="text" name="signupName" placeholder="Enter your name" required>
       <input type="email" name="signupEmail" placeholder="Enter your email" required>
       <input type="password" name="signupPassword" placeholder="Enter your password" required>
+      <br><br>
       <input type="submit" value="Sign Up" name="signupSubmit">
     </form>
   </div>
