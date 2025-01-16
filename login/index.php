@@ -86,11 +86,6 @@
     .form.active {
       display: flex;
     }
-
-    /* Animation */
-    .container.slide-left {
-      transform: translateX(-100%);
-    }
   </style>
 </head>
 <body>
