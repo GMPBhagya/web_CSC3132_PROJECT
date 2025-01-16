@@ -1,3 +1,80 @@
+<?php
+// Include the database connection
+include('dbconf.php');
+
+// Start session
+session_start();
+
+// Handle login
+if (isset($_POST['loginSubmit'])) {
+    $email = $_POST['loginEmail'];
+    $password = $_POST['loginPassword'];
+
+    // Query to find user by email
+    $query = "SELECT * FROM users WHERE user_email = ?";
+    if ($stmt = $conn->prepare($query)) {
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+            // Verify password
+            if (password_verify($password, $user['user_password'])) {
+                $_SESSION['user_id'] = $user['user_id'];
+                $_SESSION['user_email'] = $user['user_email'];
+                $_SESSION['user_name'] = $user['user_name'];
+                $_SESSION['user_role'] = $user['user_role'];
+
+                header('Location: welcome.php'); // Redirect after successful login
+                exit;
+            } else {
+                $loginError = "Incorrect password.";
+            }
+        } else {
+            $loginError = "User not found.";
+        }
+
+        $stmt->close();
+    }
+}
+
+// Handle signup
+if (isset($_POST['signupSubmit'])) {
+    $name = $_POST['signupName'];
+    $email = $_POST['signupEmail'];
+    $password = $_POST['signupPassword'];
+
+    // Check if email already exists
+    $checkEmailQuery = "SELECT * FROM users WHERE user_email = ?";
+    if ($stmt = $conn->prepare($checkEmailQuery)) {
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $signupError = "Email already in use.";
+        } else {
+            // Hash the password before saving
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+            // Insert new user into the database
+            $insertQuery = "INSERT INTO users (user_name, user_email, user_password) VALUES (?, ?, ?)";
+            if ($stmt = $conn->prepare($insertQuery)) {
+                $stmt->bind_param('sss', $name, $email, $hashedPassword);
+                $stmt->execute();
+
+                // Redirect to login page after successful signup
+                header('Location: login.php');
+                exit;
+            }
+        }
+
+        $stmt->close();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,17 +175,23 @@
 
   <div class="form" id="loginForm">
     <h2>Login</h2>
-    <input type="email" placeholder="Enter your email" id="loginEmail" required>
-    <input type="password" placeholder="Enter your password" id="loginPassword" required>
-    <input type="submit" value="Login" id="loginSubmit">
+    <?php if (isset($loginError)) echo "<p style='color:red;'>$loginError</p>"; ?>
+    <form method="POST">
+      <input type="email" name="loginEmail" placeholder="Enter your email" required>
+      <input type="password" name="loginPassword" placeholder="Enter your password" required>
+      <input type="submit" value="Login" name="loginSubmit">
+    </form>
   </div>
 
   <div class="form" id="signupForm">
     <h2>Sign Up</h2>
-    <input type="text" placeholder="Enter your name" id="signupName" required>
-    <input type="email" placeholder="Enter your email" id="signupEmail" required>
-    <input type="password" placeholder="Enter your password" id="signupPassword" required>
-    <input type="submit" value="Sign Up" id="signupSubmit">
+    <?php if (isset($signupError)) echo "<p style='color:red;'>$signupError</p>"; ?>
+    <form method="POST">
+      <input type="text" name="signupName" placeholder="Enter your name" required>
+      <input type="email" name="signupEmail" placeholder="Enter your email" required>
+      <input type="password" name="signupPassword" placeholder="Enter your password" required>
+      <input type="submit" value="Sign Up" name="signupSubmit">
+    </form>
   </div>
 </div>
 
