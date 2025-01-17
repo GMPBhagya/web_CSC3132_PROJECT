@@ -164,7 +164,7 @@
   <a href="index.php">Home</a>
   <a href="about.html">About Us</a>
   <a href="#">Discover Stories</a>
-  <a href="#">Write a Story</a>
+  <a href="write_story.php">Write a Story</a>
 
 
   <?php
