@@ -42,9 +42,6 @@ $user_logged_in = isset($_COOKIE['user_email']); // Simplified login check
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Read Story - BookHevan</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Your existing CSS styles */
-    </style>
 </head>
 <body>
     <div class="container">
