@@ -2,6 +2,19 @@
 // Include the database connection file
 include('dbconf.php');
 
+// Fetch images from the database
+$imageQuery = "SELECT image_url FROM images";
+$imageResult = $conn->query($imageQuery);
+$imageUrls = [];
+
+if ($imageResult->num_rows > 0) {
+    while($row = $imageResult->fetch_assoc()) {
+        $imageUrls[] = $row['image_url']; // Store the image URLs in an array
+    }
+} else {
+    $imageUrls = ['default_image.jpg']; // Fallback image if no data is found
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Collect form data
     $title = $_POST['title'];
@@ -68,12 +81,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     /* Page Header */
     .page-header {
-      background: linear-gradient(135deg, #FF6F61, #FF9F9F);
+      background-color: #000;
       color: #FFF;
       padding: 60px 20px;
       text-align: center;
       border-radius: 8px;
       margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
     }
 
     .page-header h1 {
@@ -155,6 +170,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       border-color: #FF6F61;
       box-shadow: 0 0 10px rgba(255, 111, 97, 0.5);
     }
+
+    /* Image Slider */
+    .header-image-slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      animation: slideShow 20s infinite;
+    }
+
+    @keyframes slideShow {
+      <?php 
+        foreach ($imageUrls as $index => $imageUrl) {
+          $percent = $index * 25;
+          echo "{$percent}% { background-image: url('{$imageUrl}'); }\n";
+        }
+      ?>
+    }
   </style>
 </head>
 <body>
@@ -170,8 +206,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <!-- Main Content -->
   <div class="main-content">
-    <!-- Page Header -->
+    <!-- Page Header with Image Slider -->
     <section class="page-header">
+      <div class="header-image-slider"></div>
       <h1>Write & Share Your Story</h1>
       <p>Bring your creativity to life! Upload your story and connect with readers.</p>
     </section>
