@@ -81,8 +81,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     /* Page Header */
     .page-header {
-      background: url('/workspaces/web_CSC3132_PROJECT/picture/pexels-lina-1741231.jpg') no-repeat center center;;
-      color: #FFF;
+      background: url('https://img.freepik.com/free-vector/watercolor-background-world-book-day-celebration_23-2150230426.jpg?t=st=1733078946~exp=1733082546~hmac=050e9832108d0c9c786e4d66a95b5b026c8a6c95f104ed5b2ada62e0da340ebc&w=740') no-repeat center center;
+      color:#900C3F;
       padding: 60px 20px;
       text-align: center;
       border-radius: 8px;
@@ -99,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     .page-header p {
       font-size: 1.2rem;
-      color: #FFF;
+      color:#900C3F;
     }
 
     /* Form Section */
