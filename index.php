@@ -164,6 +164,8 @@
   <a href="index.php">Home</a>
   <a href="about.html">About Us</a>
   <a href="#">Discover Stories</a>
+  <a href="#">Write a Story</a>
+
 
   <?php
   // Check if the user is logged in via the cookie
