@@ -67,8 +67,8 @@ CREATE TABLE images (
   image_url VARCHAR(255) NOT NULL
 );
 INSERT INTO images (image_url) VALUES
-('images/image1.jpg'),
-('images/image2.jpg'),
-('images/image3.jpg'),
-('images/image4.jpg'),
-('images/image5.jpg');
+('/workspaces/web_CSC3132_PROJECT/picture/pexels-lina-1741231.jpg'),
+('/workspaces/web_CSC3132_PROJECT/picture/pexels-mark-neal-201020-2954199.jpg'),
+('/workspaces/web_CSC3132_PROJECT/picture/pexels-pixabay-256450.jpg'),
+('picture/pexels-rodrigo-ortega-2044210904-30213721.jpg'),
+('/workspaces/web_CSC3132_PROJECT/picture/pexels-yaroslav-shuraev-5607525.jpg');
