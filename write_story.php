@@ -27,7 +27,134 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <title>Write a Story - BookHevan</title>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    /* Add styles here as needed */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #F7F8FC;
+      color: #333;
+    }
+
+    /* Sidebar Styling */
+    .sidebar {
+      background-color: #2C3E50;
+      color: #F8B400;
+      min-height: 100vh;
+      padding: 30px 20px;
+      position: fixed;
+      width: 220px;
+    }
+
+    .sidebar h2 {
+      font-weight: bold;
+      color: #FFF;
+    }
+
+    .sidebar a {
+      color: #F8B400;
+      display: block;
+      padding: 10px 0;
+      font-size: 1.1rem;
+    }
+
+    .sidebar a:hover {
+      color: #FFF;
+      text-decoration: none;
+    }
+
+    /* Main Content Styling */
+    .main-content {
+      margin-left: 250px;
+      padding: 40px 20px;
+    }
+
+    /* Page Header */
+    .page-header {
+      background: linear-gradient(135deg, #FF6F61, #FF9F9F);
+      color: #FFF;
+      padding: 60px 20px;
+      text-align: center;
+      border-radius: 8px;
+      margin-bottom: 40px;
+    }
+
+    .page-header h1 {
+      font-size: 2.8rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .page-header p {
+      font-size: 1.2rem;
+      color: #FFF;
+    }
+
+    /* Form Section */
+    .form-section {
+      background-color: #FFFFFF;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-section h2 {
+      color: #2C3E50;
+      font-weight: bold;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-control {
+      border-radius: 5px;
+      border: 1px solid #D5D8DC;
+    }
+
+    .btn-primary {
+      background-color: #FF6F61;
+      border: none;
+      color: #FFF;
+      padding: 12px 20px;
+      border-radius: 5px;
+      text-transform: uppercase;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #E04E3F;
+    }
+
+    /* Footer Section */
+    .footer {
+      background-color: #2C3E50;
+      color: #F8B400;
+      padding: 20px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .footer a {
+      color: #F8B400;
+    }
+
+    .footer a:hover {
+      color: #FFF;
+      text-decoration: none;
+    }
+
+    /* Images Styling */
+    .image-banner {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    /* Animation Effects */
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: #FF6F61;
+      box-shadow: 0 0 10px rgba(255, 111, 97, 0.5);
+    }
   </style>
 </head>
 <body>
@@ -43,10 +170,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <!-- Main Content -->
   <div class="main-content">
-    <section class="about-section">
-      <h1>Upload Your Story</h1>
-      <?php if (isset($message)) { echo "<p>$message</p>"; } ?>
-      
+    <!-- Page Header -->
+    <section class="page-header">
+      <h1>Write & Share Your Story</h1>
+      <p>Bring your creativity to life! Upload your story and connect with readers.</p>
+    </section>
+
+    <!-- Form Section -->
+    <section class="form-section">
+      <h2>Upload Your Story</h2>
+      <?php if (isset($message)) { echo "<div class='alert alert-success'>$message</div>"; } ?>
+
       <form action="write_story.php" method="POST">
         <div class="form-group">
           <label for="title">Story Title</label>
@@ -56,7 +190,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <label for="content">Story Content</label>
           <textarea class="form-control" id="content" name="content" rows="6" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Upload Story</button>
+        <button type="submit" class="btn-primary">Upload Story</button>
       </form>
     </section>
 
