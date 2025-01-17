@@ -208,12 +208,14 @@
         </div>
         <!-- Feature for Writers -->
         <div class="col-md-6 mb-4">
-          <div class="feature-box">
-            <img src="https://xnote.ai/cdn/shop/files/MG_7799.jpg?v=1725665666&width=1920" alt="For Writers" class="feature-image">
-            <h3>For Writers</h3>
-            <p>Upload your stories, engage with readers, and monetize your content with paid story parts.</p>
-          </div>
-        </div>
+  <div class="feature-box">
+    <img src="https://xnote.ai/cdn/shop/files/MG_7799.jpg?v=1725665666&width=1920" alt="For Writers" class="feature-image">
+    <h3>For Writers</h3>
+    <p>Upload your stories, engage with readers, and monetize your content with paid story parts.</p>
+    <a href="write_story.php" class="btn btn-primary">Start Writing</a> <!-- Add link here -->
+  </div>
+</div>
+
       </div>
     </section>
 
