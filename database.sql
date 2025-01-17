@@ -62,3 +62,13 @@ CREATE TABLE stories (
   author_email VARCHAR(255) NOT NULL,
   date_uploaded TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+CREATE TABLE images (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  image_url VARCHAR(255) NOT NULL
+);
+INSERT INTO images (image_url) VALUES
+('images/image1.jpg'),
+('images/image2.jpg'),
+('images/image3.jpg'),
+('images/image4.jpg'),
+('images/image5.jpg');
