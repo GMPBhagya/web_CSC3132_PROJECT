@@ -162,11 +162,9 @@
 <div class="sidebar">
   <h2>BookHevan</h2>
   <a href="index.php">Home</a>
-  <a href="about.html">About Us</a>
-  <a href="#">Discover Stories</a>
+  <a href="about.php">About Us</a>
+  <a href="discover.php">Discover Stories</a>
   <a href="write_story.php">Write a Story</a>
-
-
   <?php
   // Check if the user is logged in via the cookie
   if (isset($_COOKIE['user_email'])) {
@@ -180,7 +178,6 @@
   }
   ?>
 
-  <a href="#">Write a Story</a>
   <a href="#">Contact</a>
 </div>
 
@@ -204,7 +201,8 @@
             <img src="https://www.bookclubbabble.com/wp-content/uploads/2022/04/free-ebook-image.jpg" alt="For Readers" class="feature-image">
             <h3>For Readers</h3>
             <p>Read serialized stories, comment on chapters, and support your favorite authors. The first part of every story is free!</p>
-          </div>
+            <a href="discover.php" class="btn btn-primary">Start Reading</a> <!-- Add link here -->
+            </div>
         </div>
         <!-- Feature for Writers -->
         <div class="col-md-6 mb-4">

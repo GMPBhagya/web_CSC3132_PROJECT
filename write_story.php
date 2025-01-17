@@ -16,13 +16,13 @@ if ($imageResult->num_rows > 0) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Collect form data
-    $title = $_POST['title'];
-    $content = $_POST['content'];
+    // Collect and sanitize form data
+    $title = $conn->real_escape_string($_POST['title']);
+    $content = $conn->real_escape_string($_POST['content']);
     $author_email = $_COOKIE['user_email']; // Assuming the user is logged in
 
-    // SQL query to insert the new story into the database
-    $sql = "INSERT INTO stories (title, content, author_email) VALUES ('$title', '$content', '$author_email')";
+    // SQL query to insert the new story into the 'writers_stories' table
+    $sql = "INSERT INTO writers_stories (title, content, author_email) VALUES ('$title', '$content', '$author_email')";
 
     if ($conn->query($sql) === TRUE) {
         $message = "Story uploaded successfully!";
@@ -199,7 +199,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <h2>BookHevan</h2>
     <a href="index.php">Home</a>
     <a href="about.php">About Us</a>
-    <a href="#">Discover Stories</a>
+    <a href="discover.php">Discover Stories</a>
     <a href="write_story.php">Write a Story</a>
     <a href="#">Contact</a>
   </div>
